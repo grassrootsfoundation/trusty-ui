@@ -1,0 +1,20 @@
+.tag {
+	--tag-bg-color: transparent;
+	--tag-text-color: var(--color-black);
+
+	background-color: var(--bg-color);
+	display: inline-flex;
+	gap: var(--size-1);
+	align-items: center;
+	vertical-align: middle;
+	padding-inline: var(--size-1);
+	height: var(--size-3);
+	font-size: var(--font-size-2xs);
+	font-weight: var(--font-weight-semibold);
+	line-height: var(--line-height-none);
+	letter-spacing: var(--letter-spacing-wider);
+	text-transform: uppercase;
+	color: var(--tag-text-color);
+	background-color: var(--tag-bg-color);
+	border-radius: var(--radius-sm);
+}

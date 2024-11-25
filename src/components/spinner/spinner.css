@@ -1,0 +1,54 @@
+.spinner {
+	--spinner-color: #00000026 rgba(0, 0, 0, 0.25) rgba(0, 0, 0, 0.35) rgba(0, 0, 0, 0.5);
+	--spinner-size: var(--size-4);
+	--part-offset: 6px;
+
+	position: relative;
+	display: grid;
+	align-items: center;
+	width: var(--spinner-size);
+	height: var(--spinner-size);
+}
+
+.spinner[data-invert='true'] {
+	--spinner-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.35)
+		rgba(255, 255, 255, 0.5);
+}
+
+.spinner[data-size='xs'] {
+	--spinner-size: var(--size-2);
+	--part-offset: var(--size-0-5);
+}
+
+.spinner[data-size='sm'] {
+	--spinner-size: var(--size-3);
+	--part-offset: 5px;
+}
+
+.spinner[data-size='lg'] {
+	--spinner-size: var(--size-5);
+	--part-offset: 7px;
+}
+
+.spinner > div {
+	position: absolute;
+	width: var(--spinner-size);
+	height: var(--spinner-size);
+	will-change: opacity;
+	border-radius: 50%;
+	display: inline-block;
+	border: var(--part-offset) solid;
+	border-color: var(--spinner-color);
+	box-sizing: border-box;
+	animation: rotation 1s linear infinite;
+	transform-origin: 50% 50%;
+}
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

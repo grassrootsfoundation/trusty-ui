@@ -1,0 +1,8 @@
+.generic-block {
+	background-color: var(--bg-color);
+	border-radius: var(--radius);
+
+	&[data-appearance='card'] {
+		padding: var(--space-3);
+	}
+}

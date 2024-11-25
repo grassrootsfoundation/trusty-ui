@@ -1,0 +1,62 @@
+@import './_media.css';
+@import './_size.css';
+@import './_color.css';
+@import './_brand.css';
+@import './_accessibility.css';
+@import './_text.css';
+@import './_space.css';
+@import './_transition.css';
+@import './_shadow.css';
+@import './_opacity.css';
+@import './_radius.css';
+@import './_z-index.css';
+
+:root {
+	--body-text-color: var(--color-black);
+	--font-sans: 'Sora', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
+
+	&:focus-within {
+		scroll-behavior: smooth;
+	}
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	text-rendering: optimizeSpeed;
+	font-family: var(--font-sans);
+	color: var(--body-text-color);
+}
+:is(a, button, input, textarea, select) {
+	outline-width: 0;
+	outline-color: transparent;
+	transition: outline-color var(--duration-normal);
+}
+
+:is(a, button, input, textarea, select):focus-visible {
+	outline-width: var(--a11y-outline-width);
+	outline-color: var(--a11y-outline-color);
+	outline-style: solid;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

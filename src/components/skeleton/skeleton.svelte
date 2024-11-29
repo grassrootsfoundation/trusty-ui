@@ -1,5 +1,4 @@
 <script lang="ts">
-	import When from '$components/when/when.svelte';
 	import { fade } from 'svelte/transition';
 
 	import './skeleton.css';

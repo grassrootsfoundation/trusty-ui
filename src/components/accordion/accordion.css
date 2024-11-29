@@ -16,9 +16,16 @@
 		border-radius: var(--accordion-radius, var(--radius-sm));
 		cursor: pointer;
 
-		.accordion-open & {
+		.accordion-intro-start & {
 			border-bottom-left-radius: var(--border-radius-none);
 			border-bottom-right-radius: var(--border-radius-none);
+			transition: border-radius var(--duration-normal) var(--ease-out);
+		}
+
+		.accordion-outro-end & {
+			border-bottom-left-radius: var(--accordion-radius, var(--radius-sm));
+			border-bottom-right-radius: var(--accordion-radius, var(--radius-sm));
+			transition: border-radius var(--duration-long) var(--ease-in);
 		}
 	}
 

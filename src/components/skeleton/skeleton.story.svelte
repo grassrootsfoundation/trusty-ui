@@ -35,7 +35,7 @@
 					shape="circle"
 					name="Morgan Segura"
 					--avatar-width="100px"
-					font-size={tok('font-size', '4xl')}
+					font-size={tok('text', '4xl')}
 					--avatar-bgcolor={tok('color', 'green-300')}
 					--avatar-color={tok('color', 'white')}
 				/>

@@ -9,11 +9,16 @@
 	import './accordion.css';
 
 	let open: boolean = false;
+	let element: HTMLDivElement;
 
 	const handleClick = () => (open = !open);
 </script>
 
-<div class="accordion-container {open ? 'accordion-open' : ''}" {...$$restProps}>
+<div
+	class="accordion-container {open ? 'accordion-intro-start' : 'accordion-outro-end'}"
+	bind:this={element}
+	{...$$restProps}
+>
 	<Button class="unstyled-button accordion-header" on:click={handleClick}>
 		<Text class="accordion-text">
 			<Truncate>

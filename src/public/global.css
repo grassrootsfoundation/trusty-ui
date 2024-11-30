@@ -37,6 +37,8 @@ body {
 :is(a, button, input, textarea, select) {
 	outline-width: 0;
 	outline-color: transparent;
+	background-color: transparent;
+	border: none;
 	transition: outline-color var(--duration-normal);
 }
 

@@ -1,15 +1,17 @@
 <script lang="ts">
+	import clsx from 'clsx';
+
 	import './accordion.css';
 
 	import type { TColor } from '$types/color';
 	import type { TRadius } from '$types/radius';
 	import type { TShadow } from '$types/shadow';
 	import type { TSize } from '$types/size';
-	import type { TTextSize } from '$src/types/text';
+	import type { TTextSize } from '$types/text';
 
 	interface AccordionProps {
-		borderColor?: TColor;
 		bgColor?: TColor;
+		borderColor?: TColor;
 		className?: string;
 		color?: TColor;
 		gap?: TSize;
@@ -21,17 +23,19 @@
 
 	export let bgColor: AccordionProps['bgColor'] = undefined,
 		borderColor: AccordionProps['borderColor'] = undefined,
-		className: AccordionProps['className'] = '',
 		color: AccordionProps['color'] = undefined,
 		gap: AccordionProps['gap'] = undefined,
 		radius: AccordionProps['radius'] = undefined,
 		shadow: AccordionProps['shadow'] = undefined,
 		spacing: AccordionProps['spacing'] = undefined,
 		textSize: AccordionProps['textSize'] = undefined;
+
+	let className: AccordionProps['className'] = $$restProps.class;
+	export { className as class };
 </script>
 
 <div
-	class="accordion {className}"
+	class={clsx('accordion', className)}
 	style:--accordion-bg-color={bgColor}
 	style:--accordion-border-color={borderColor}
 	style:--accordion-color={color}

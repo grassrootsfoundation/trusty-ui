@@ -3,6 +3,11 @@
 
 	import Spinner from '$components/spinner/spinner.svelte';
 	import When from '$components/when/when.svelte';
+	import type { TColor } from '$src/types/color';
+	import type { TShadow } from '$src/types/shadow';
+	import type { TSize } from '$src/types/size';
+	import type { TTextSize } from '$src/types/text';
+	import clsx from 'clsx';
 
 	import './button.css';
 
@@ -10,27 +15,37 @@
 		active?: boolean;
 		appearance?: 'primary' | 'secondary' | 'tertiary' | 'control' | 'minimal' | 'link';
 		busy?: boolean;
+		bgColor?: TColor;
+		color?: TColor;
 		className?: string;
 		fill?: boolean;
 		disabled?: boolean;
 		hidden?: boolean;
 		invert?: boolean;
+		shadow?: TShadow;
 		shape?: 'square' | 'circle';
+		spacing?: TSize;
 		size?: Extract<SizeProp, 'xs' | 'sm' | 'md' | 'lg'> | undefined;
+		textSize?: TTextSize;
 		underline?: boolean;
-		variant?: 'default' | 'pill' | 'rounded';
+		variant?: 'pill' | 'rounded';
 	}
 
-	export let active: ButtonProps['active'] = false,
+	export let active: ButtonProps['active'] = undefined,
 		appearance: ButtonProps['appearance'] = undefined,
-		busy: ButtonProps['busy'] = false,
-		fill: ButtonProps['fill'] = false,
-		disabled: ButtonProps['disabled'] = false,
-		hidden: ButtonProps['hidden'] = false,
-		invert: ButtonProps['invert'] = false,
+		bgColor: ButtonProps['bgColor'] = undefined,
+		busy: ButtonProps['busy'] = undefined,
+		color: ButtonProps['color'] = undefined,
+		fill: ButtonProps['fill'] = undefined,
+		disabled: ButtonProps['disabled'] = undefined,
+		hidden: ButtonProps['hidden'] = undefined,
+		invert: ButtonProps['invert'] = undefined,
 		shape: ButtonProps['shape'] = undefined,
+		shadow: ButtonProps['shadow'] = undefined,
 		size: ButtonProps['size'] = 'md',
-		underline: ButtonProps['underline'] = false,
+		spacing: ButtonProps['spacing'] = undefined,
+		textSize: ButtonProps['textSize'] = undefined,
+		underline: ButtonProps['underline'] = undefined,
 		variant: ButtonProps['variant'] = undefined;
 
 	let className: ButtonProps['className'] = $$restProps.class;
@@ -80,15 +95,22 @@
 <When condition={$$restProps.href}>
 	<a
 		href={$$restProps.href}
-		class="button {className}"
+		class={clsx('button', { className })}
+		data-active={active}
 		data-appearance={appearance}
 		data-busy={busy}
+		data-disabled={disabled}
 		data-fill={fill}
 		data-invert={invert}
 		data-shape={shape}
 		data-size={size}
 		data-underline={underline}
 		data-variant={variant}
+		style:--button-bg-color={bgColor}
+		style:--button-color={color}
+		style:--button-shadow={shadow}
+		style:--button-spacing={spacing}
+		style:--button-text-size={textSize}
 		{hidden}
 		{...$$restProps}
 	>
@@ -107,22 +129,27 @@
 </When>
 <When condition={!$$restProps.href}>
 	<button
-		class="button {className}"
+		class={clsx('button', { className })}
 		on:click
 		on:mouseover
 		on:focus
 		on:mouseenter
 		on:mouseleave
+		data-active={active}
 		data-appearance={appearance}
 		data-busy={busy}
+		data-disabled={disabled}
 		data-fill={fill}
 		data-invert={invert}
 		data-shape={shape}
 		data-size={size}
 		data-underline={underline}
 		data-variant={variant}
-		disabled={disabled || busy}
-		aria-pressed={Boolean(active)}
+		style:--button-bg-color={bgColor}
+		style:--button-color={color}
+		style:--button-shadow={shadow}
+		style:--button-spacing={spacing}
+		style:--button-text-size={textSize}
 		{hidden}
 		{...$$restProps}
 	>

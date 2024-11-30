@@ -15,8 +15,9 @@ const config = {
 
 		alias: {
 			'$src/*': './src/*',
-			'$components/*': './src/components/*',
-			'$utils/*': './utils/*',
+			'$lib/*': './src/lib/*',
+			'$utils/*': './src/lib/utils/*',
+			'$components/*': './src/lib/components/*',
 			'$types/*': './src/types/*'
 		}
 	}

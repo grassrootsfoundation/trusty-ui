@@ -1,4 +1,4 @@
-import type { ResponsiveProp, ResponsivePropObject } from '../src/components/component';
+import type { ResponsiveProp, ResponsivePropObject } from '$src/components/component';
 import { SUPPORTED_BREAKPOINT_KEYS } from './constants';
 
 /**
@@ -8,6 +8,7 @@ export function definedProps(props = {}) {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return Object.fromEntries(Object.entries(props).filter(([k, v]) => v !== undefined));
 }
+
 /**
  * Determines if a prop conforms to the responsive prop
  * config shape.

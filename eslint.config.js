@@ -10,16 +10,7 @@ export default tseslint.config(
 	...svelte.configs['flat/recommended'],
 	prettier,
 	...svelte.configs['flat/prettier'],
-	{
-		overrides: [
-			{
-				files: ['payload.config.ts'],
-				rules: {
-					'@typescript-eslint/no-require-imports': 'off'
-				}
-			}
-		]
-	},
+
 	{
 		languageOptions: {
 			globals: {
@@ -41,6 +32,10 @@ export default tseslint.config(
 	},
 	{
 		rules: {
+			'@typescript-eslint/no-unused-vars': [
+				'warn',
+				{ argsIgnorePattern: '^_', varsIgnorePattern: '^_' }
+			],
 			'import/order': [
 				'warn',
 				{

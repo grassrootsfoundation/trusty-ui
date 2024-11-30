@@ -1,5 +1,6 @@
 :root {
 	/* Font Size */
+	--text-2xs: 0.675rem;
 	--text-xs: 0.75rem;
 	--text-sm: 0.875rem;
 	--text-md: 1rem;

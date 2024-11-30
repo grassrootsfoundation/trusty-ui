@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { convertStringToInitials } from '$utils/convert-string-to-initials';
+	import clsx from 'clsx';
+	import { createInitials } from '$utils/create-initials';
 
 	import Image from '$components/image/image.svelte';
 	import Text from '$components/text/text.svelte';
@@ -7,38 +8,44 @@
 	import './avatar.css';
 
 	import type { TTextSize } from '$src/types/text';
+	import type { TColor } from '$src/types/color';
+	import type { SizeProp } from '$components/component';
 
 	interface AvatarProps {
 		name: string;
-		bgcolor?: string;
+		bgColor?: TColor;
+		className?: string;
+		color?: TColor;
 		fontSize?: TTextSize;
-		color?: string;
 		shape?: 'square' | 'rounded' | 'circle';
-		size?: string;
+		size?: Extract<SizeProp, 'sm' | 'md' | 'lg' | 'xl'>;
 		url?: string;
 	}
 
-	export let color: AvatarProps['color'] = undefined,
-		bgcolor: AvatarProps['bgcolor'] = undefined,
-		fontSize: AvatarProps['fontSize'] = 'md',
+	export let bgColor: AvatarProps['bgColor'] = undefined,
+		color: AvatarProps['color'] = undefined,
+		fontSize: AvatarProps['fontSize'] = undefined,
 		name: AvatarProps['name'] = 'Avatar',
 		shape: AvatarProps['shape'] = undefined,
 		size: AvatarProps['size'] = undefined,
 		url: AvatarProps['url'] = undefined;
+
+	let className: AvatarProps['className'] = $$restProps.class;
+	export { className as class };
 </script>
 
 <div
-	class="avatar"
-	style:--avatar-color={color}
-	style:--avatar-bgcolor={bgcolor}
-	style:--avatar-font-size={fontSize}
+	class={clsx('avatar', className)}
 	data-shape={shape}
 	data-size={size}
+	style:--avatar-color={color}
+	style:--avatar-bg-color={bgColor}
+	style:--avatar-font-size={fontSize}
 	{...$$restProps}
 >
 	{#if url}
 		<Image alt={name} {url} fill={true} cover={true} />
 	{:else}
-		<Text>{convertStringToInitials(name)}</Text>
+		<Text as="p" weight="bold">{createInitials(name, 2)}</Text>
 	{/if}
 </div>

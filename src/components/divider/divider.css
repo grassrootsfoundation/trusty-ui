@@ -1,7 +1,9 @@
 .divider {
 	--divider-color: var(--color-neutral-200);
 	--divider-height: var(--size-px);
+	--divider-width: var(--size-px);
 	--divider-spacing: var(--size-2);
+	--divider-gap: var(--size-2);
 
 	margin-block: var(--divider-spacing);
 	margin-inline: auto;
@@ -10,10 +12,8 @@
 	background-repeat: repeat-x;
 
 	&[data-appearance='dotted'] {
-		--divider-height: var(--size-0-5);
-
-		background-size: var(--size-1);
-		background-image: linear-gradient(to right, var(--divider-color) 50%, transparent 0%);
+		background-size: var(--divider-width) var(--divider-width);
+		background-image: radial-gradient(circle, var(--divider-color) 50%, transparent 0%);
 	}
 
 	&[data-appearance='solid'] {
@@ -21,17 +21,17 @@
 	}
 
 	&[data-appearance='dashed'] {
-		background-size: var(--size-2) var(--size-px);
-		background-position: calc(-0.25 * var(--size-2)) bottom;
+		background-size: var(--divider-gap) var(--divider-height);
+		background-position: calc(-0.25 * var(--divider-width)) bottom;
 		background-image: linear-gradient(to right, var(--divider-color) 50%, transparent 0%);
 	}
 
 	&[data-spacing='sm'] {
-		--divider-spacing: var(--size-1);
+		--divider-spacing: var(--size-2);
 	}
 
 	&[data-spacing='lg'] {
-		--divider-spacing: var(--size-4);
+		--divider-spacing: var(--size-8);
 	}
 
 	&[data-spacing='none'] {

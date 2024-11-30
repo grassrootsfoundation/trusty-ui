@@ -18,15 +18,19 @@
 			</Stack>
 			<Stack>
 				<Text preset="display">Solid</Text>
-				<Divider appearance="solid" />
+				<Divider
+					appearance="solid"
+					color={tok('color', 'yellow-400')}
+					height={tok('size', '0-5')}
+				/>
 			</Stack>
 			<Stack>
 				<Text preset="display">Dashed</Text>
-				<Divider appearance="dashed" />
+				<Divider appearance="dashed" gap={tok('size', 8)} height={tok('size', 2)} />
 			</Stack>
 			<Stack>
 				<Text preset="display">Dotted</Text>
-				<Divider appearance="dotted" />
+				<Divider appearance="dotted" height={tok('size', 8)} width={tok('size', 4)} />
 			</Stack>
 		</Stack>
 	</svelte:component>

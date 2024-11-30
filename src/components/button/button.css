@@ -42,7 +42,7 @@
 	@media (hover: hover) {
 		&:hover {
 			&:after {
-				opacity: var(--opacity-65);
+				opacity: var(--opacity-75);
 			}
 		}
 	}
@@ -184,7 +184,7 @@
 			&:hover {
 				--button-bg-color: currentColor;
 				&:after {
-					opacity: var(--opacity-20);
+					opacity: var(--opacity-10);
 				}
 			}
 		}
@@ -192,7 +192,7 @@
 		&:is(:active, [aria-pressed='true']) {
 			--button-bg-color: currentColor;
 			&:after {
-				opacity: var(--opacity-30);
+				opacity: var(--opacity-20);
 			}
 		}
 	}
@@ -204,14 +204,14 @@
 		--button-spacing: none;
 
 		@media (hover: hover) {
-			&: hover {
+			&:hover {
 				&:after {
 					opacity: var(--opacity-30);
 				}
 			}
 		}
-		&: is(: active, [aria-pressed= 'true']) {
-			&: after {
+		&:is(:active, [aria-pressed='true']) {
+			&:after {
 				opacity: var(--opacity-100);
 			}
 		}
@@ -234,6 +234,20 @@
 		--button-color: var(--color-grey-900);
 		--button-border: currentColor;
 		--button-bg-color: var(--color-transparent);
+
+		@media (hover: hover) {
+			&:hover {
+				&:after {
+					opacity: var(--opacity-30);
+				}
+			}
+		}
+
+		&:is(:active, [aria-pressed='true']) {
+			&:after {
+				opacity: var(--opacity-100);
+			}
+		}
 	}
 
 	&[data-invert='true'][data-appearance='secondary'] {
@@ -244,6 +258,22 @@
 
 	&[data-invert='true'][data-appearance='minimal'] {
 		--button-color: var(--color-white);
+
+		@media (hover: hover) {
+			&:hover {
+				--button-bg-color: currentColor;
+				&:after {
+					opacity: var(--opacity-30);
+				}
+			}
+		}
+
+		&:is(:active, [aria-pressed='true']) {
+			--button-bg-color: currentColor;
+			&:after {
+				opacity: var(--opacity-40);
+			}
+		}
 	}
 
 	&[data-invert='true'][data-appearance='link'] {
@@ -253,7 +283,7 @@
 		@media (hover: hover) {
 			&:hover {
 				&:after {
-					opacity: var(--opacity-20);
+					opacity: var(--opacity-50);
 				}
 			}
 		}

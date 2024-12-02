@@ -1,14 +1,16 @@
 <script lang="ts">
-	import Text from '$components/text/text.svelte';
+	import clsx from 'clsx';
 
 	import './list.css';
 
-	let className: string = $$restProps.class;
+	interface ListItemProps {
+		className?: string;
+	}
+
+	let className: ListItemProps['className'] = $$restProps.class;
 	export { className as class };
 </script>
 
-<li class="list-item {className ?? ''}" {...$$restProps}>
-	<Text as="p">
-		<slot />
-	</Text>
+<li class={clsx('list-item', className)} {...$$restProps}>
+	<slot />
 </li>

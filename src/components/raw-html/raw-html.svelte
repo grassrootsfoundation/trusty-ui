@@ -1,8 +1,6 @@
 <script lang="ts">
-	import type { TextAsProp } from '../component';
-
 	interface RawHTMLProps {
-		as?: TextAsProp;
+		as?: keyof HTMLElementTagNameMap;
 		content?: unknown;
 		className?: string;
 	}

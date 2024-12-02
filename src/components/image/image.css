@@ -7,7 +7,15 @@
 		display: block;
 		border-radius: var(--image-radius);
 		border-style: none;
+		aspect-ratio: var(--image-aspect-ratio, var(--aspect-auto));
 	}
+	&[data-aspect-ratio='square'] > img {
+		--image-aspect-ratio: var(--aspect-square);
+	}
+	&[data-aspect-ratio='video'] > img {
+		--image-aspect-ratio: var(--aspect-video);
+	}
+
 	&[data-fill='true'] > img {
 		width: 100%;
 	}

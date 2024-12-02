@@ -1,21 +1,10 @@
 .list {
-	line-height: var(--line-height-normal);
-	margin: var(--size-2) 0;
-
-	&.bullet,
-	&.number {
-		padding: 0 0 0 var(--size-3);
-	}
+	margin-block: var(--size-2);
+	list-style-type: var(--list-type, var(--list-disc));
+	list-style-position: var(--list-position, var(--list-outside));
 }
 
-.list ::marker {
-	font-weight: var(--font-weight-semibold);
-}
-
-.list li {
-	margin: 0;
-}
-
+.list li,
 .list ul,
 .list ol {
 	margin: 0;

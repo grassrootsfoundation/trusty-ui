@@ -1,3 +1,5 @@
+import type { ResponsiveProp, ResponsivePropObject } from '$src/types/media';
+
 export const global = {
 	site: {
 		long_name: import.meta.env.VITE_BRAND_LONG_NAME,
@@ -23,3 +25,15 @@ export const SUPPORTED_BREAKPOINT_KEYS = ['default', ...Object.keys(MediaQuery)]
 	| 'default'
 	| keyof typeof MediaQuery
 )[];
+
+/**
+ * Utility function to check if a property is a ResponsivePropObject.
+ */
+export function isResponsivePropObject<T>(prop: unknown): prop is ResponsivePropObject<T> {
+	return (
+		typeof prop === 'object' &&
+		prop !== null &&
+		!Array.isArray(prop) &&
+		Object.keys(prop).some((key) => SUPPORTED_BREAKPOINT_KEYS.includes(key as any))
+	);
+}

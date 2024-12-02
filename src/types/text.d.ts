@@ -65,6 +65,8 @@ export type TTextAlign = 'inherit' | 'left' | 'center' | 'right' | 'justified';
 
 export type TFontFamily = 'sans' | 'serif';
 
+export type TTextPreset = 'display' | 'caption' | 'prose';
+
 export interface IText {
 	align?: TTextAlign;
 	as?: TTextAs;
@@ -76,3 +78,5 @@ export interface IText {
 	transform?: TTransform;
 	weight?: TFontWeight;
 }
+
+export type THeadingLevel = 1 | 2 | 3 | 4 | 5 | 6 | string;

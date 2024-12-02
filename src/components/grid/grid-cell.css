@@ -1,0 +1,51 @@
+.grid-cell {
+	grid-column: var(--col-span, var(--col-span-default));
+	grid-column-start: var(--col-start, var(--col-start-default));
+	grid-column-end: var(--col-end, var(--col-end-default));
+	grid-row-start: var(--row-end, var(--row-end-default));
+	grid-row-span: var(--row-end, var(--row-span-default));
+	grid-row-end: var(--row-end, var(--row-end-default));
+
+	@media (--media-sm) {
+		& {
+			--col-span: var(--col-span-sm);
+			--col-start: var(--col-start-sm);
+			--col-end: var(--col-end-sm);
+			--row-start: var(--row-start-sm);
+			--row-span: var(--row-span-sm);
+			--row-end: var(--row-end-sm);
+		}
+	}
+
+	@media (--media-md) {
+		& {
+			--col-span: var(--col-span-md);
+			--col-start: var(--col-start-md);
+			--col-end: var(--col-end-md);
+			--row-start: var(--row-start-md);
+			--row-span: var(--row-span-md);
+			--row-end: var(--row-end-md);
+		}
+	}
+
+	@media (--media-lg) {
+		& {
+			--col-span: var(--col-span-lg);
+			--col-start: var(--col-start-lg);
+			--col-end: var(--col-end-lg);
+			--row-start: var(--row-start-lg);
+			--row-span: var(--row-span-lg);
+			--row-end: var(--row-end-lg);
+		}
+	}
+
+	@media (--media-xl) {
+		& {
+			--col-span: var(--col-span-xl);
+			--col-start: var(--col-start-xl);
+			--col-end: var(--col-end-xl);
+			--row-span: var(--row-span-xl);
+			--row-end: var(--row-end-xl);
+		}
+	}
+}

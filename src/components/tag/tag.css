@@ -1,8 +1,5 @@
 .tag {
-	--tag-bg-color: transparent;
-	--tag-text-color: var(--color-black);
-
-	background-color: var(--bg-color);
+	background-color: var(--tag-bg-color, var(--color-neutral-200));
 	display: inline-flex;
 	gap: var(--size-1);
 	align-items: center;

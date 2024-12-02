@@ -5,12 +5,4 @@
 	transition:
 		background-color var(--duration-short) var(--ease-in-out),
 		color var(--duration-short) var(--ease-in-out);
-
-	&:hover {
-		opacity: var(--opacity-75, 0.75);
-	}
-
-	&:active {
-		opacity: var(--opacity-90);
-	}
 }

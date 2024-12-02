@@ -1,18 +1,15 @@
 <script lang="ts">
 	import './truncate.css';
 
-	export let lines: number | undefined = undefined,
-		title: string | undefined = undefined;
+	interface TruncateProps {
+		lines?: number;
+		title?: string;
+	}
 
-	const customProperties = {
-		'--truncate-line-limit': lines
-	};
+	export let lines: TruncateProps['lines'] = undefined,
+		title: TruncateProps['title'] = undefined;
 </script>
 
-<div
-	class="truncate"
-	style:--truncate-line-limit={customProperties['--truncate-line-limit']}
-	{title}
->
+<div class="truncate" style:--truncate-line-limit={lines} {title}>
 	<slot />
 </div>

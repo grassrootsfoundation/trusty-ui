@@ -1,8 +1,16 @@
 .generic-block {
-	background-color: var(--bg-color);
-	border-radius: var(--radius);
+	background-color: var(--block-bg-color);
+	border-radius: var(--block-radius);
+	padding-inline: var(--block-spacing-inline);
+	padding-block: var(--block-spacing-block);
+	border: 1px solid var(--block-border-color, var(--color-transparent));
+	filter: var(--block-shadow);
+	color: var(--block-color);
 
 	&[data-appearance='card'] {
-		padding: var(--space-3);
+		--block-border-color: var(--color-grey-200);
+		--block-bg-color: var(--color-white);
+		--block-spacing-inline: var(--size-5);
+		--block-spacing-block: var(--size-5);
 	}
 }

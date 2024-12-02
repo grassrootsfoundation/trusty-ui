@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import RawHTML from '../raw-html/raw-html.svelte';
+	import RawHTML from '$components/raw-html/raw-html.svelte';
 
 	export let title = 'Home | Example.com';
 	export let description = 'Description of your website.';

@@ -12,10 +12,10 @@
 		<Stack>
 			<Text preset="display">Small</Text>
 			<Stack direction="row">
-				<Badge intent="info" size="sm">0</Badge>
-				<Badge intent="success" size="sm">100</Badge>
-				<Badge intent="warning" size="sm">2000</Badge>
-				<Badge intent="error" size="sm">2000</Badge>
+				<Badge intent="info">0</Badge>
+				<Badge intent="success">100</Badge>
+				<Badge intent="warning">2000</Badge>
+				<Badge intent="error">2000</Badge>
 			</Stack>
 		</Stack>
 		<Divider appearance="solid" />

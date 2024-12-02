@@ -1,10 +1,13 @@
 <script lang="ts">
-	import type { SizeProp } from '$components/component';
 	import clsx from 'clsx';
-	import type { TColor } from '$src/types/color';
-	import type { TSize } from '$src/types/size';
+
+	import { generateCustomProperties, inlineStyles } from '$utils/components';
 
 	import './divider.css';
+
+	import type { ResponsiveConfig } from '$utils/components';
+	import type { TColor } from '$src/types/color';
+	import type { TSize } from '$src/types/size';
 
 	interface DividerProps {
 		appearance?: 'solid' | 'dotted' | 'dashed';
@@ -12,7 +15,7 @@
 		color?: TColor;
 		gap?: TSize;
 		height?: TSize;
-		spacing?: Extract<SizeProp, 'sm' | 'md' | 'lg'> | 'none';
+		spacing?: TSize;
 		width?: TSize;
 	}
 
@@ -25,15 +28,32 @@
 
 	let className: DividerProps['className'] = $$restProps.class;
 	export { className as class };
+
+	const config: ResponsiveConfig = {
+		color: { name: 'divider-color', category: 'color' },
+		gap: { name: 'divider-gap', category: 'size' },
+		height: { name: 'divider-height', category: 'size' },
+		spacing: { name: 'divider-spacing', category: 'size' },
+		width: { name: 'divider-width', category: 'size' }
+	};
+
+	const mergedStyles = inlineStyles(
+		generateCustomProperties(
+			{
+				color,
+				gap,
+				height,
+				spacing,
+				width
+			},
+			config
+		)
+	);
 </script>
 
 <div
 	class={clsx('divider', className)}
 	data-appearance={appearance}
-	data-spacing={spacing}
-	style:--divider-color={color}
-	style:--divider-gap={gap}
-	style:--divider-height={height}
-	style:--divider-width={width}
+	style={mergedStyles}
 	{...$$restProps}
 />

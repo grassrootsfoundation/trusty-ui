@@ -1,32 +1,39 @@
 <script lang="ts">
+	import Divider from '$components/divider/divider.svelte';
 	import GenericBlock from './generic-block.svelte';
+	import Stack from '$components/stack/stack.svelte';
 	import Text from '$components/text/text.svelte';
-	import { tok } from '$utils/style';
 
 	export let Hst;
 </script>
 
 <svelte:component this={Hst.Story} title="Component/GenericBlock">
-	<svelte:component this={Hst.Variant} title="Card">
-		<GenericBlock
-			style={`background-color: ${tok('color', 'neutral-100')}; padding:${tok('space', 10)}`}
-		>
-			<GenericBlock appearance="card">
+	<Stack gap="6">
+		<Stack>
+			<Text preset="display">Card</Text>
+			<GenericBlock appearance="card" gap="4">
 				<Text preset="caption" size="xs" transform="uppercase">Supertitle</Text>
 				<Text preset="display">Card Ttitle</Text>
 				<Text preset="caption" size="md">Text in a card</Text>
 			</GenericBlock>
-		</GenericBlock>
-	</svelte:component>
-	<svelte:component this={Hst.Variant} title="Tile">
-		<GenericBlock
-			style={`background-color: ${tok('color', 'neutral-100')}; padding:${tok('space', 10)}`}
-		>
-			<GenericBlock appearance="tile">
-				<Text preset="caption" size="xs" transform="uppercase">Supertitle</Text>
-				<Text preset="display">Card Ttitle</Text>
-				<Text preset="caption" size="md">Text in a card</Text>
+		</Stack>
+
+		<Divider appearance="dashed" gap="8" />
+
+		<Stack>
+			<Text preset="display">Default</Text>
+			<GenericBlock
+				bgColor="light-blue-50"
+				borderColor="light-blue-200"
+				spacingBlock="4"
+				spacingInline="3"
+			>
+				<Text preset="caption">
+					The generic block has many features and can be used for multiple uses.
+				</Text>
 			</GenericBlock>
-		</GenericBlock>
-	</svelte:component>
+		</Stack>
+
+		<GenericBlock appearance="tile"></GenericBlock>
+	</Stack>
 </svelte:component>

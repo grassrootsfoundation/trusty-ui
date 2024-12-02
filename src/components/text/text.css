@@ -1,8 +1,8 @@
 .text {
 	position: relative;
-	color: var(--text-color, inherit);
+	color: var(--text-color);
 	font-family: var(--font-sans);
-	font-size: var(--text-font-size, inherit);
+	font-size: var(--text-font-size);
 	font-weight: var(--text-font-weight, var(--font-weight-normal));
 	line-height: var(--text-leading, var(--leading-relaxed));
 	text-transform: var(--text-transform);

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { tok } from '$utils/style';
-	import Text from '../text/text.svelte';
+
+	import Text from '$components/text/text.svelte';
 	import Truncate from './truncate.svelte';
 
 	export let Hst;

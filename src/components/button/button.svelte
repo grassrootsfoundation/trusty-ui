@@ -1,15 +1,19 @@
 <script lang="ts">
-	import type { SizeProp } from '$components/component';
+	import clsx from 'clsx';
+	import { generateCustomProperties, inlineStyles } from '$utils/components';
 
 	import Spinner from '$components/spinner/spinner.svelte';
 	import When from '$components/when/when.svelte';
+
 	import type { TColor } from '$src/types/color';
 	import type { TShadow } from '$src/types/shadow';
 	import type { TSize } from '$src/types/size';
 	import type { TTextSize } from '$src/types/text';
-	import clsx from 'clsx';
 
 	import './button.css';
+
+	import type { ResponsiveConfig } from '$utils/components';
+	import type { TRadius } from '$src/types/radius';
 
 	interface ButtonProps {
 		active?: boolean;
@@ -22,10 +26,11 @@
 		disabled?: boolean;
 		hidden?: boolean;
 		invert?: boolean;
+		radius?: TRadius;
 		shadow?: TShadow;
 		shape?: 'square' | 'circle';
 		spacing?: TSize;
-		size?: Extract<SizeProp, 'xs' | 'sm' | 'md' | 'lg'> | undefined;
+		size?: TSize;
 		textSize?: TTextSize;
 		underline?: boolean;
 		variant?: 'pill' | 'rounded';
@@ -40,6 +45,7 @@
 		disabled: ButtonProps['disabled'] = undefined,
 		hidden: ButtonProps['hidden'] = undefined,
 		invert: ButtonProps['invert'] = undefined,
+		radius: ButtonProps['radius'] = 'md',
 		shape: ButtonProps['shape'] = undefined,
 		shadow: ButtonProps['shadow'] = undefined,
 		size: ButtonProps['size'] = 'md',
@@ -50,6 +56,29 @@
 
 	let className: ButtonProps['className'] = $$restProps.class;
 	export { className as class };
+
+	const config: ResponsiveConfig = {
+		bgColor: { name: 'button-bg-color', category: 'color' },
+		color: { name: 'button-color', category: 'color' },
+		radius: { name: 'button-radius', category: 'radius' },
+		shadow: { name: 'button-shadow', category: 'shadow' },
+		spacing: { name: 'button-spacing', category: 'size' },
+		textSize: { name: 'button-text-size', category: 'text' }
+	};
+
+	const mergedStyles = inlineStyles(
+		generateCustomProperties(
+			{
+				bgColor,
+				color,
+				radius,
+				shadow,
+				spacing,
+				textSize
+			},
+			config
+		)
+	);
 
 	/**
 	 * Determines the size of the spinner based on the size of
@@ -106,11 +135,7 @@
 		data-size={size}
 		data-underline={underline}
 		data-variant={variant}
-		style:--button-bg-color={bgColor}
-		style:--button-color={color}
-		style:--button-shadow={shadow}
-		style:--button-spacing={spacing}
-		style:--button-text-size={textSize}
+		style={mergedStyles}
 		{hidden}
 		{...$$restProps}
 	>
@@ -145,11 +170,7 @@
 		data-size={size}
 		data-underline={underline}
 		data-variant={variant}
-		style:--button-bg-color={bgColor}
-		style:--button-color={color}
-		style:--button-shadow={shadow}
-		style:--button-spacing={spacing}
-		style:--button-text-size={textSize}
+		style={mergedStyles}
 		{hidden}
 		{...$$restProps}
 	>

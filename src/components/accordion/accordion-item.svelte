@@ -19,7 +19,7 @@
 	bind:this={element}
 	{...$$restProps}
 >
-	<Button class="unstyled-button accordion-header" on:click={handleClick}>
+	<Button class="accordion-header" on:click={handleClick}>
 		<Text class="accordion-text">
 			<Truncate>
 				<slot name="head" />
@@ -28,9 +28,9 @@
 
 		<div class="accordion-icon">
 			{#if open}
-				<Icon icon="mdi:chevron-down" width={25} />
+				<Icon icon="mdi:chevron-down" />
 			{:else}
-				<Icon icon="mdi:chevron-right" width={25} />
+				<Icon icon="mdi:chevron-right" />
 			{/if}
 		</div>
 	</Button>

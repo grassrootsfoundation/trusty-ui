@@ -1,0 +1,7 @@
+:root {
+	--list-inside: inside;
+	--list-outside: outside;
+	--list-none: none;
+	--list-disc: disc;
+	--list-decimal: decimal;
+}

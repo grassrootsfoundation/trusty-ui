@@ -1,34 +1,42 @@
 <script lang="ts">
+	import clsx from 'clsx';
 	import { tok } from '$utils/style';
-	import { definedProps } from '$utils/components';
+	import { definedProps, inlineStyles } from '$utils/components';
 
 	import './text.css';
 
-	import type { IText } from '$src/types/text';
+	import type {
+		TFontFamily,
+		TFontWeight,
+		TLeading,
+		TTextAlign,
+		TTextPreset,
+		TTextSize,
+		TTracking,
+		TTransform
+	} from '$src/types/text';
 	import type { TColor } from '$src/types/color';
 
-	interface TextProps extends IText {
+	interface TextProps {
+		as?: keyof HTMLElementTagNameMap;
+		align?: TTextAlign;
 		className?: string;
 		color?: TColor;
+		family?: TFontFamily;
+		height?: TLeading;
+		preset?: TTextPreset;
+		size?: TTextSize;
+		spacing?: TTracking;
 		underline?: boolean;
+		transform?: TTransform;
+		weight?: TFontWeight;
 	}
 
-	function getPresetProps(preset: TextProps['preset']): Partial<TextProps> {
-		switch (preset) {
-			case 'caption':
-				return {
-					height: 'snug'
-				};
-			case 'display':
-				return {
-					height: 'tight',
-					spacing: 'tight',
-					weight: 'semibold'
-				};
-			default:
-				return {};
-		}
-	}
+	const PRESET_PROPS: Record<string, Partial<TextProps>> = {
+		caption: { height: 'snug' },
+		display: { height: 'tight', spacing: 'tight', weight: 'semibold' },
+		default: {}
+	};
 
 	export let align: TextProps['align'] = undefined,
 		as: TextProps['as'] = 'div',
@@ -42,87 +50,52 @@
 		transform: TextProps['transform'] = undefined,
 		weight: TextProps['weight'] = undefined;
 
-	let className: TextProps['className'] = $$restProps.class ?? '';
+	let className: TextProps['className'] = $$restProps.class;
 	export { className as class };
 
-	function getCustomProperties({
-		align,
-		color,
-		height,
-		preset,
-		size,
-		spacing,
-		transform,
-		weight
-	}: TextProps) {
-		const customProperties = {} as Record<string, string>;
+	function generateCustomProperties(props: TextProps) {
+		const { align, color, height, preset, size, spacing, transform, weight } = props;
+		const vars: Record<string, string> = {};
 
-		if (align) {
-			customProperties['--text-align'] = align;
-		}
-
-		if (color) {
-			customProperties['--text-color'] = tok('color', color);
-		}
-
-		if (height) {
-			customProperties['--text-leading'] = tok('leading', height);
-		}
+		// Add tokens for each style property
+		if (align) vars['--text-align'] = align;
+		if (color) vars['--text-color'] = tok('color', color);
+		if (height) vars['--text-leading'] = tok('leading', height);
 
 		if (size) {
-			if (preset === 'display') {
-				customProperties['--text-font-size'] = tok('text-display', size);
-			} else if (preset === 'prose') {
-				customProperties['--text-font-size'] = tok('text-prose', size);
-			} else {
-				customProperties['--text-font-size'] = tok('text-caption', size);
-			}
+			const sizeKey =
+				preset === 'display' ? 'text-display' : preset === 'prose' ? 'text-prose' : 'text-caption';
+			vars['--text-font-size'] = tok(sizeKey, size);
 		}
 
-		if (spacing) {
-			customProperties['--text-tracking'] = tok('tracking', spacing);
-		}
+		if (spacing) vars['--text-tracking'] = tok('tracking', spacing);
+		if (transform) vars['--text-transform'] = transform;
+		if (weight) vars['--text-font-weight'] = tok('font-weight', weight);
 
-		if (transform) {
-			customProperties['--text-transform'] = transform;
-		}
-
-		if (weight) {
-			customProperties['--text-font-weight'] = tok('font-weight', weight);
-		}
-		return customProperties;
+		return vars;
 	}
 
-	const mergedStyles = {
-		...getCustomProperties({
-			...getPresetProps(preset),
-			...definedProps({
-				align,
-				color,
-				family,
-				height,
-				preset,
-				size,
-				spacing,
-				transform,
-				weight
-			})
+	const mergedStyles = generateCustomProperties({
+		...PRESET_PROPS[preset || 'default'], // Apply preset defaults
+		...definedProps({
+			align,
+			color,
+			family,
+			height,
+			preset,
+			size,
+			spacing,
+			transform,
+			weight
 		})
-	};
+	});
 </script>
 
 <svelte:element
 	this={as}
-	class="text {className}"
+	class={clsx('text', className)}
 	data-underline={underline}
-	style:--text-align={mergedStyles['--text-align']}
-	style:--text-color={mergedStyles['--text-color']}
-	style:--text-line-height={mergedStyles['--text-line-height']}
-	style:--text-font-size={mergedStyles['--text-font-size']}
-	style:--text-letter-spacing={mergedStyles['--text-letter-height']}
-	style:--text-transform={mergedStyles['--text-transform']}
-	style:--text-font-weight={mergedStyles['--text-font-weight']}
-	style:--text-font-family={mergedStyles['--text-font-family']}
+	style={inlineStyles(mergedStyles)}
 	{...$$restProps}
 >
 	<slot />

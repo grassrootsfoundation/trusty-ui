@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Alert from './alert.svelte';
 	import Divider from '$components/divider/divider.svelte';
-	import { tok } from '$utils/style';
 
 	export let Hst;
 </script>
@@ -10,8 +9,8 @@
 	<svelte:component this={Hst.Variant} title="default">
 		<Alert
 			intent="info"
-			radius={tok('radius', 'md')}
-			spacing={tok('size', '3')}
+			radius="md"
+			spacing="3"
 			visible={true}
 			onDismiss={() => console.log('closed')}
 		>
@@ -20,8 +19,8 @@
 		<Divider />
 		<Alert
 			intent="success"
-			radius={tok('radius', 'md')}
-			spacing={tok('size', '3')}
+			radius="md"
+			spacing="3"
 			visible={true}
 			onDismiss={() => console.log('closed')}
 		>
@@ -30,8 +29,8 @@
 		<Divider />
 		<Alert
 			intent="warning"
-			radius={tok('radius', 'md')}
-			spacing={tok('size', '3')}
+			radius="md"
+			spacing="3"
 			visible={true}
 			onDismiss={() => console.log('closed')}
 		>
@@ -40,8 +39,8 @@
 		<Divider />
 		<Alert
 			intent="error"
-			radius={tok('radius', 'md')}
-			spacing={tok('size', '3')}
+			radius="md"
+			spacing="3"
 			visible={true}
 			onDismiss={() => console.log('closed')}
 		>

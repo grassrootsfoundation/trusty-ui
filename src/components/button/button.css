@@ -1,6 +1,5 @@
 .button {
 	--button-text-gap: var(--size-1-5);
-	--button-border: 2px solid var(--color-transparent);
 
 	position: relative;
 	appearance: none;
@@ -12,8 +11,8 @@
 	padding-block: var(--button-spacing, var(--size-2));
 	padding-inline: calc(var(--button-spacing, var(--size-2)) * 1.5);
 	color: var(--button-color, var(--color-white));
+	border: var(--button-border, 2px solid var(--color-transparent));
 	font-size: var(--button-text-size, var(--text-md));
-	font-family: var(--font-sans);
 	line-height: var(--button-leading, var(--leading-none));
 	letter-spacing: var(--button-tracking, var(--tracking-snug));
 	text-decoration: none;
@@ -159,14 +158,14 @@
 		--button-color: var(--color-grey-900);
 
 		@media (hover: hover) {
-			&: hover {
-				&: after {
+			&:hover {
+				&:after {
 					opacity: var(--opacity-65);
 				}
 			}
 		}
-		&: is(: active, [aria-pressed= 'true']) {
-			&: after {
+		&:is(:active, [aria-pressed='true']) {
+			&:after {
 				opacity: var(--opacity-100);
 			}
 		}

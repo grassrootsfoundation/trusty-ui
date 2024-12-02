@@ -8,9 +8,9 @@
 	color: var(--avatar-color, var(--color-neutral-900));
 	height: var(--avatar-size, var(--size-8));
 	width: var(--avatar-size, var(--size-8));
-	aspect-ratio: 1;
+	aspect-ratio: var(--aspect-square);
 	font-size: var(--avatar-text-size, var(--text-md));
-	box-shadow: var(--accordion-shadow, var(--shadow-none));
+	filter: var(--accordion-shadow, var(--shadow-none));
 	font-weight: var(--font-weight-bold);
 	overflow: hidden;
 
@@ -20,20 +20,5 @@
 
 	&[data-shape='circle'] {
 		border-radius: var(--radius-full);
-	}
-
-	&[data-size='sm'] {
-		--avatar-size: var(--size-6);
-		--avatar-text-size: var(--text-2xs);
-	}
-
-	&[data-size='lg'] {
-		--avatar-size: var(--size-10);
-		--avatar-text-size: var(--text-lg);
-	}
-
-	&[data-size='xl'] {
-		--avatar-size: var(--size-12);
-		--avatar-text-size: var(--text-xl);
 	}
 }

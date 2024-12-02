@@ -1,52 +1,45 @@
 <script lang="ts">
-	import { createResponsivePropCSSProperties, definedProps } from '$utils/components';
+	import clsx from 'clsx';
+	import { generateCustomProperties, inlineStyles, type ResponsiveConfig } from '$utils/components';
+	import type { ResponsiveProp } from '$src/types/media';
 
 	import './grid.css';
 
-	import type { ResponsiveProp } from '$components/component';
+	import type { TGridCell } from '$src/types/grid';
+	import type { TSize } from '$src/types/size';
 
 	interface GridProps {
-		columns?: ResponsiveProp<number>;
-		gap?: ResponsiveProp<number> | ResponsiveProp<string>;
+		className?: string;
+		cols?: ResponsiveProp<TGridCell>;
+		rows?: ResponsiveProp<TGridCell>;
+		gap?: ResponsiveProp<TSize>;
 	}
 
-	export let columns: GridProps['columns'] = undefined,
-		gap: GridProps['gap'] = undefined;
+	export let cols: GridProps['cols'] = undefined,
+		gap: GridProps['gap'] = undefined,
+		rows: GridProps['rows'] = undefined;
 
-	function getCustomProperties({ gap, columns }: GridProps) {
-		const base: Record<string, unknown> = {};
+	let className: GridProps['className'] = $$restProps.class;
+	export { className as class };
 
-		if (gap) {
-			base['--grid-gap'] = gap;
-		}
-
-		return Object.assign(
-			base,
-			createResponsivePropCSSProperties(columns, {
-				name: '--grid-column-count'
-			})
-		);
-	}
-
-	const mergedStyles = {
-		...getCustomProperties({
-			...definedProps({
-				gap,
-				columns
-			})
-		})
+	const config: ResponsiveConfig = {
+		cols: { name: 'grid-cols', category: 'grid-cols' },
+		gap: { name: 'grid-gap', category: 'size' },
+		rows: { name: 'grid-rows', category: 'grid-rows' }
 	};
+
+	const mergedStyles = inlineStyles(
+		generateCustomProperties(
+			{
+				cols,
+				rows,
+				gap
+			},
+			config
+		)
+	);
 </script>
 
-<div
-	class="grid"
-	style:--grid-column-count-default={mergedStyles['--grid-column-count-default']}
-	style:--grid-column-count-sm={mergedStyles['--grid-column-count-sm']}
-	style:--grid-column-count-md={mergedStyles['--grid-column-count-md']}
-	style:--grid-column-count-lg={mergedStyles['--grid-column-count-lg']}
-	style:--grid-column-count-xl={mergedStyles['--grid-column-count-xl']}
-	style:--grid-gap={mergedStyles['--grid-gap']}
-	{...$$restProps}
->
+<div class={clsx('grid', className)} style={mergedStyles} {...$$restProps}>
 	<slot />
 </div>

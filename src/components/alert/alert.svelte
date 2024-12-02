@@ -1,7 +1,8 @@
 <script lang="ts">
 	import clsx from 'clsx';
-	import Icon from '@iconify/svelte';
 	import { fade } from 'svelte/transition';
+	import Icon from '@iconify/svelte';
+	import { generateCustomProperties, inlineStyles } from '$utils/components';
 
 	import Text from '$components/text/text.svelte';
 	import UnstyledButton from '$components/button/unstyled-button.svelte';
@@ -9,8 +10,9 @@
 
 	import './alert.css';
 
-	import type { IntentProp } from '$components/component';
+	import type { ResponsiveConfig } from '$utils/components';
 	import type { TColor } from '$types/color';
+	import type { TIntent } from '$types/intent';
 	import type { TRadius } from '$types/radius';
 	import type { TShadow } from '$types/shadow';
 	import type { TSize } from '$types/size';
@@ -20,7 +22,7 @@
 		bgColor?: TColor;
 		className?: string;
 		color?: TColor;
-		intent?: Extract<IntentProp, 'success' | 'error' | 'warning' | 'info'>;
+		intent?: Extract<TIntent, 'success' | 'error' | 'warning' | 'info'>;
 		onDismiss?: () => void;
 		radius?: TRadius;
 		shadow?: TShadow;
@@ -42,6 +44,29 @@
 	let className: AlertProps['className'] = $$restProps.class;
 	export { className as class };
 
+	const config: ResponsiveConfig = {
+		bgColor: { name: 'alert-bg-color', category: 'color' },
+		color: { name: 'alert-color', category: 'color' },
+		radius: { name: 'alert-radius', category: 'radius' },
+		shadow: { name: 'alert-shadow', category: 'shadow' },
+		spacing: { name: 'alert-spacing', category: 'size' },
+		textSize: { name: 'alert-text-size', category: 'text' }
+	};
+
+	const mergedStyles = inlineStyles(
+		generateCustomProperties(
+			{
+				bgColor,
+				color,
+				radius,
+				shadow,
+				spacing,
+				textSize
+			},
+			config
+		)
+	);
+
 	function handleClick() {
 		visible = !visible;
 		onDismiss !== undefined && onDismiss();
@@ -52,12 +77,7 @@
 	<div
 		class={clsx('alert', onDismiss && 'alert-dismissable', className)}
 		data-intent={intent}
-		style:--alert-bg-color={bgColor}
-		style:--alert-color={color}
-		style:--alert-radius={radius}
-		style:--alert-shadow={shadow}
-		style:--alert-spacing={spacing}
-		style:--alert-text-size={textSize}
+		style={mergedStyles}
 		transition:fade
 	>
 		<Text as="p" weight="medium">

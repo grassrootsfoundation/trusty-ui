@@ -10,7 +10,7 @@
 	padding: var(--alert-spacing, var(--size-2));
 	border-radius: var(--alert-radius, var(--radius-none));
 	grid-template-columns: 1fr auto;
-	box-shadow: var(--accordion-shadow, var(--shadow-none));
+	filter: var(--accordion-shadow, var(--shadow-none));
 
 	&:has(.alert-close-button) {
 		padding-inline-start: var(--size-3);

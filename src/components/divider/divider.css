@@ -2,7 +2,7 @@
 	--divider-color: var(--color-neutral-200);
 	--divider-height: var(--size-px);
 	--divider-width: var(--size-px);
-	--divider-spacing: var(--size-2);
+	--divider-spacing: var(--size-4);
 	--divider-gap: var(--size-2);
 
 	margin-block: var(--divider-spacing);
@@ -24,17 +24,5 @@
 		background-size: var(--divider-gap) var(--divider-height);
 		background-position: calc(-0.25 * var(--divider-width)) bottom;
 		background-image: linear-gradient(to right, var(--divider-color) 50%, transparent 0%);
-	}
-
-	&[data-spacing='sm'] {
-		--divider-spacing: var(--size-2);
-	}
-
-	&[data-spacing='lg'] {
-		--divider-spacing: var(--size-8);
-	}
-
-	&[data-spacing='none'] {
-		--divider-spacing: 0;
 	}
 }

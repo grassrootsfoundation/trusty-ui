@@ -1,6 +1,6 @@
 {
 	"name": "@grassrootsfoundation/trusty-ui",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A reusable UI library for Svelte projects",
 	"main": "dist/svelte-ui-library.umd.js",
 	"module": "dist/svelte-ui-library.es.js",

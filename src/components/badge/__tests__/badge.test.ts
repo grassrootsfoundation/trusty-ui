@@ -5,6 +5,6 @@ import Badge from '$components/badge/badge.svelte';
 
 describe('Badge', () => {
 	it('works', () => {
-		render(Badge, { content: `Text here` });
+		render(Badge);
 	});
 });

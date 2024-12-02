@@ -2,22 +2,17 @@
 	import { toPx } from '$utils/to-pixels';
 	import { tok } from '$utils/style';
 
-	import type {
-		AlignProp,
-		DirectionProp,
-		GapProp,
-		JustifyProp,
-		StackAsProp
-	} from '$components/component';
-
 	import './stack.css';
 
+	import type { TSize } from '$src/types/size';
+	import type { TAlign, TDirection, TJustify } from '$src/types/display';
+
 	interface StackProps {
-		align?: AlignProp;
-		as?: StackAsProp;
-		direction?: DirectionProp;
-		gap?: GapProp;
-		justify?: JustifyProp;
+		align?: TAlign;
+		as?: keyof HTMLElementTagNameMap;
+		direction?: TDirection;
+		gap?: TSize;
+		justify?: TJustify;
 	}
 
 	export let align: StackProps['align'] = undefined,

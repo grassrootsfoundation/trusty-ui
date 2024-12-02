@@ -21,10 +21,17 @@ export default defineConfig({
 		}
 	},
 	resolve: {
+		// alias: {
+		// 	$src: path.resolve(__dirname, './src'),
+		// 	$utils: path.resolve(__dirname, './utils'),
+		// 	$components: path.resolve(__dirname, './src/components')
+		// }
 		alias: {
-			$src: path.resolve(__dirname, './src'),
-			$utils: path.resolve(__dirname, './utils'),
-			$components: path.resolve(__dirname, './src/components')
+			$src: '/src',
+			$lib: '/src/lib',
+			$utils: '/utils',
+			$components: '/src/components',
+			$types: '/src/types'
 		}
 	},
 	test: {

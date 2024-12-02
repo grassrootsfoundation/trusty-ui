@@ -1,15 +1,15 @@
 <script lang="ts">
-	import type { SizeProp } from '../component';
-
 	import './spinner.css';
+
+	import type { TSizeLabel } from '$src/types/size';
 
 	interface SpinnerProps {
 		invert?: boolean;
-		size?: Extract<SizeProp, 'xs' | 'sm' | 'md' | 'lg'>;
+		size?: TSizeLabel;
 	}
 
-	export let invert: SpinnerProps['invert'] = false,
-		size: SpinnerProps['size'] = undefined;
+	export let invert: SpinnerProps['invert'] = undefined,
+		size: SpinnerProps['size'] = 'sm';
 </script>
 
 <div class="spinner" data-invert={invert} data-size={size} role="progressbar">

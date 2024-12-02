@@ -1,5 +1,5 @@
 import type { ResponsiveProp } from '$types/media';
-import { isResponsivePropObject, SUPPORTED_BREAKPOINT_KEYS } from './constants';
+import { SUPPORTED_BREAKPOINT_KEYS } from './constants';
 import { tok, type DesignTokenCategory } from './style';
 
 /**

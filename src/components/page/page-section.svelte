@@ -1,13 +1,13 @@
 <script lang="ts">
 	import './page.css';
 
-	import type { SizeProp, StackAsProp } from '$components/component';
+	import type { TSizeLabel } from '$src/types/size';
 
 	interface PageSectionProps {
-		as?: StackAsProp;
+		as?: keyof HTMLElementTagNameMap;
 		container: 'prose' | 'page' | 'none';
-		spacingTop?: Extract<SizeProp, 'sm' | 'md' | 'lg' | 'xl' | '2xl'> | 'none';
-		spacingBottom?: Extract<SizeProp, 'sm' | 'md' | 'lg' | 'xl' | '2xl'> | 'none';
+		spacingTop?: Extract<TSizeLabel, 'sm' | 'md' | 'lg' | 'xl' | '2xl'> | 'none';
+		spacingBottom?: Extract<TSizeLabel, 'sm' | 'md' | 'lg' | 'xl' | '2xl'> | 'none';
 	}
 
 	export let as: PageSectionProps['as'] = 'div',

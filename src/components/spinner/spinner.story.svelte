@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Divider from '../divider/divider.svelte';
-	import Stack from '../stack/stack.svelte';
-	import Text from '../text/text.svelte';
+	import Divider from '$components/divider/divider.svelte';
+	import Stack from '$components/stack/stack.svelte';
+	import Text from '$components/text/text.svelte';
 	import Spinner from './spinner.svelte';
 
 	export let Hst;
@@ -12,7 +12,7 @@
 		<Stack>
 			<Stack>
 				<Text preset="display">Extra Small: xs</Text>
-				<Spinner size="xs" />
+				<Spinner size="8" />
 			</Stack>
 			<Divider appearance="solid" />
 			<Stack>

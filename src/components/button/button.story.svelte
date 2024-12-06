@@ -6,7 +6,6 @@
 	import Icon from '@iconify/svelte';
 	import Stack from '$components/stack/stack.svelte';
 	import Text from '$components/text/text.svelte';
-	import Grid from '../grid/grid.svelte';
 
 	export let Hst;
 </script>

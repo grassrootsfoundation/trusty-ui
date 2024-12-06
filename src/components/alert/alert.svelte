@@ -5,7 +5,7 @@
 	import { generateCustomProperties, inlineStyles } from '$utils/components';
 
 	import Text from '$components/text/text.svelte';
-	import UnstyledButton from '$components/button/unstyled-button.svelte';
+	import UnstyledButton from '$components/button/button-unstyled.svelte';
 	import When from '$components/when/when.svelte';
 
 	import './alert.css';

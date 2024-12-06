@@ -1,5 +1,5 @@
 <script lang="ts">
-	import './unstyled-button.css';
+	import './button-unstyled.css';
 
 	interface UnstyledButtonProps {
 		className?: string;
@@ -9,7 +9,7 @@
 </script>
 
 <button
-	class="unstyled-button {className}"
+	class="button-unstyled {className}"
 	on:click
 	on:mouseover
 	on:focus

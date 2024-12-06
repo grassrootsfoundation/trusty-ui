@@ -2,7 +2,7 @@
 	import { slide } from 'svelte/transition';
 	import Icon from '@iconify/svelte';
 
-	import Button from '$components/button/unstyled-button.svelte';
+	import Button from '$components/button/button-unstyled.svelte';
 	import Text from '$components/text/text.svelte';
 	import Truncate from '$components/truncate/truncate.svelte';
 

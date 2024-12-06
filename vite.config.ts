@@ -6,7 +6,7 @@ export default defineConfig({
 	plugins: [svelte()],
 	build: {
 		lib: {
-			entry: path.resolve(__dirname, './src/index.ts'),
+			entry: path.resolve(__dirname, './src/components/index.ts'),
 			name: 'TrustyUI',
 			formats: ['es', 'umd'],
 			fileName: (format) => `trusty-ui.${format}.js`

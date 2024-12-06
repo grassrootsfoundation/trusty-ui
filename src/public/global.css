@@ -1,67 +1,12 @@
-@import './css/_media.css';
-@import './css/_aspect-ratio.css';
-@import './css/_color.css';
-@import './css/_brand.css';
-@import './css/_accessibility.css';
-@import './css/_grid.css';
-@import './css/_list.css';
-@import './css/_opacity.css';
-@import './css/_radius.css';
-@import './css/_shadow.css';
-@import './css/_size.css';
-@import './css/_space.css';
-@import './css/_text.css';
-@import './css/_transition.css';
-@import './css/_z-index.css';
+@import 'trusty-css/dist/index.css';
 
 :root {
-	/* --body-text-color: var(--color-black);
+	--body-text-color: var(--color-black);
 	--font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
-}
-
-html {
-	-webkit-text-size-adjust: 100%;
-	-webkit-tap-highlight-color: transparent;
-
-	&:focus-within {
-		scroll-behavior: smooth;
-	}
+		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-	text-rendering: optimizeSpeed;
-	/* font-family: var(--font-sans);
-	color: var(--body-text-color); */
-}
-:is(a, button, input, textarea, select) {
-	outline-width: 0;
-	outline-color: transparent;
-	background-color: transparent;
-	border: none;
-	transition: outline-color var(--duration-normal);
-}
-
-:is(a, button, input, textarea, select):focus-visible {
-	outline-width: var(--a11y-outline-width);
-	outline-color: var(--a11y-outline-color);
-	outline-style: solid;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	html:focus-within {
-		scroll-behavior: auto;
-	}
-
-	*,
-	*::before,
-	*::after {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
-	}
+	font-family: var(--font-sans);
+	color: var(--body-text-color);
 }

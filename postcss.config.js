@@ -1,13 +1,13 @@
 export default {
 	plugins: {
-		'@csstools/postcss-global-data': {
-			files: ['./src/public/css/_media.css']
-		},
+		'postcss-import': {},
+		'postcss-nested': {},
 		'postcss-preset-env': {
 			features: {
 				'color-mix': true
 			}
 		},
-		autoprefixer: {}
+		autoprefixer: {},
+		cssnano: {}
 	}
 };
